@@ -1,11 +1,11 @@
-# Yandex Dynamic DNS
+# DigitalOcean Dynamic DNS
 
-- Преполагается, что управление доменом делегировано Яндексу.
+- Преполагается, что управление DNS записями для домена делегировано DigitalOcean.
 - Получите ключ для управления доменом. Для этого откройте:
 
-`https://pddimp.yandex.ru/api2/admin/get_token`
+`https://cloud.digitalocean.com/account/api`
 
-авторизуйтесь, укажите имя домена и получите токен. Копируйте его в поле `TOKEN` в файле `.env`.
+авторизуйтесь и получите токен. Копируйте его в поле `TOKEN` в файле `.env`.
 
 - Укажите `DOMAIN` и `SUBDOMAIN`, которыми хотите управлять, в файле `.env`:
 
@@ -20,23 +20,23 @@ SUBDOMAIN = 'subdomain'
 
 - Чтобы добавить поддомен:
 
-`./yaddns --add hostname ip`
+`./ddns --add hostname ip`
 
 - Чтобы удалить поддомен:
 
-`./yaddns --delete hostname`
+`./ddns --delete hostname`
 
 - Чтобы обновить адрес поддомена вручную:
 
-`./yaddns --update hostname ip`
+`./ddns --update hostname ip`
 
 - Чтобы автоматически раз в 30 минут обновлять адрес для поддомена указанного в .env:
 
-`./yaddns --auto`
+`./ddns --auto`
 
 Для последнего случая удобно положить скрипт в Docker:
 
 ```
-docker build -t alardus/yaddns .
-docker run -d --restart=always --name yaddns alardus/yaddns
+docker build -t alardus/dodns .
+docker run -d --restart=always --name yaddns alardus/dodns
 ```

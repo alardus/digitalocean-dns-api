@@ -11,7 +11,7 @@ def puship():
     updatehost(subdomain, ip)
     time.sleep(1800)
 
-parser = argparse.ArgumentParser(description='Yandex Dynamic DNS')
+parser = argparse.ArgumentParser(description='DigitalOcean Dynamic DNS')
 parser.add_argument("--add", nargs='+', help="Add a hostname. Syntax: '--add hostname ip'")
 parser.add_argument("--update", nargs='+', help="Update a hostname. Syntax: '--update hostname ip'")
 parser.add_argument("--auto", help="Auto update a hostname that specified in .env", action = 'store_true')

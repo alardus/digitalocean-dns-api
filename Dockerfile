@@ -1,5 +1,5 @@
 FROM python:3.5
-MAINTAINER Alexander Bykov <alardus@ya.ru>
+MAINTAINER Alexander Bykov <to@alard.us>
 RUN mkdir -m 777 /code
 WORKDIR /code
 
