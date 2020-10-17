@@ -38,5 +38,5 @@ SUBDOMAIN = 'subdomain'
 
 ```
 docker build -t alardus/dodns .
-docker run -d --restart=always --name yaddns alardus/dodns
+docker run --dns 8.8.8.8 -d --restart=always --name dodns alardus/dodns
 ```
