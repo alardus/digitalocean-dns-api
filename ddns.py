@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(description='DigitalOcean Dynamic DNS')
 parser.add_argument("--add", nargs='+', help="Add a hostname. Syntax: '--add hostname ip'")
 parser.add_argument("--update", nargs='+', help="Update a hostname. Syntax: '--update hostname ip'")
 parser.add_argument("--auto", help="Auto update a hostname that specified in .env", action = 'store_true')
-parser.add_argument("--delete", nargs='+', help="Delete a hostname. Syntax: '--delete hostname ip'")
+parser.add_argument("--delete", nargs='+', help="Delete a hostname. Syntax: '--delete hostname'")
 args = parser.parse_args()
 
 if args.add:

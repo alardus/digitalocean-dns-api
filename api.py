@@ -12,16 +12,11 @@ def addhost(subdomain, ip):
     values = {'name' : subdomain,
               'type' : 'A',
               'ttl' : '1800',
-              'data' : ip,
-              'priority' : 'null',
-              'port' : 'null',
-              'weight' : 'null',
-              'flags' : 'null',
-              'tag' : 'null'}
+              'data' : ip}
     url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records'
 
-    data = urllib.parse.urlencode(values)
-    data = data.encode('ascii')
+    data = json.dumps(values)
+    data = data.encode()
     req = urllib.request.Request(url, data, headers)
     urllib.request.urlopen(req)
 
@@ -50,8 +45,8 @@ def updatehost(subdomain, ip):
     values = {'data' : ip}
     url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records/' + recid
 
-    data = urllib.parse.urlencode(values)
-    data = data.encode('ascii')
+    data = json.dumps(values)
+    data = data.encode()
     req = urllib.request.Request(url, data, headers, method='PUT')
     urllib.request.urlopen(req)
 
@@ -63,7 +58,7 @@ def delhost(subdomain):
     values = {}
     url = url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records/' + recid
 
-    data = urllib.parse.urlencode(values)
-    data = data.encode('ascii')
+    data = json.dumps(values)
+    data = data.encode()
     req = urllib.request.Request(url, data, headers, method='DELETE')
     urllib.request.urlopen(req)
