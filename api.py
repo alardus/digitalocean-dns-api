@@ -22,7 +22,7 @@ def addhost(subdomain, ip):
 
 def listhosts(subdomain):
     headers = {'Authorization' : (env('TOKEN'))}
-    url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records'
+    url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records?type=A&per_page=200'
 
     req = urllib.request.Request(url, headers = headers)
     request = urllib.request.urlopen(req)
@@ -56,7 +56,7 @@ def delhost(subdomain):
 
     headers = {'Authorization' : (env('TOKEN'))}
     values = {}
-    url = url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records/' + recid
+    url = 'https://api.digitalocean.com/v2/domains/' + (env('DOMAIN')) + '/records/' + recid
 
     data = json.dumps(values)
     data = data.encode()
